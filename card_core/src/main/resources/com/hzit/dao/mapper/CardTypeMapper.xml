@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzit.dao.mapper.CardTypeMapper">
+
+    <sql id="cardTypeBaseColumnSql">
+        card_type_id,
+        card_type_name
+    </sql>
+
+    <sql id="cardTypeBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardTypeId)">
+                    card_type_id = #{map.cardTypeId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardTypeName)">
+                    AND card_type_name = #{map.cardTypeName}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCardType" parameterType="com.hzit.dao.entity.CardType">
+        INSERT INTO card_type(
+        <include refid="cardTypeBaseColumnSql"/>
+        )VALUES(
+            #{cardTypeId},
+            #{cardTypeName}
+        )
+    </insert>
+
+    
+    <delete id="deleteCardTypeByCardTypeId" parameterType="Integer">
+        DELETE FROM card_type WHERE card_type_id = #{cardTypeId}
+    </delete>
+
+    <update id="updateCardType" parameterType="com.hzit.dao.entity.CardType">
+        UPDATE card_type
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardTypeName)">
+                card_type_name = #{cardTypeName} ,
+            </if>
+        </set>
+        WHERE card_type_id = #{cardTypeId}
+    </update>
+
+    <select id="searchCardTypeByParams" parameterType="map" resultMap="cardTypeMap">
+        SELECT
+        <include refid="cardTypeBaseColumnSql"/>
+        FROM card_type
+        <include refid="cardTypeBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hzit.dao.entity.CardType" id="cardTypeMap">
+        <id column="card_type_id" property="cardTypeId"/>
+        <result column="card_type_name" property="cardTypeName"/>
+    </resultMap>
+
+</mapper>

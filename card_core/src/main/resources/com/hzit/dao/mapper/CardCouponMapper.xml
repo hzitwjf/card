@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzit.dao.mapper.CardCouponMapper">
+
+    <sql id="cardCouponBaseColumnSql">
+        card_id,
+        card_uuid,
+        card_name,
+        card_big_pic_url,
+        card_small_pic_url,
+        card_type_id,
+        card_start_time,
+        card_end_time,
+        card_stock,
+        card_restrict,
+        card_state
+    </sql>
+
+    <sql id="cardCouponBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardId)">
+                    card_id = #{map.cardId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardUuid)">
+                    AND card_uuid = #{map.cardUuid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardName)">
+                    AND card_name = #{map.cardName}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardBigPicUrl)">
+                    AND card_big_pic_url = #{map.cardBigPicUrl}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardSmallPicUrl)">
+                    AND card_small_pic_url = #{map.cardSmallPicUrl}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardTypeId)">
+                    AND card_type_id = #{map.cardTypeId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardStartTime)">
+                    AND card_start_time = #{map.cardStartTime}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardEndTime)">
+                    AND card_end_time = #{map.cardEndTime}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardStock)">
+                    AND card_stock = #{map.cardStock}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardRestrict)">
+                    AND card_restrict = #{map.cardRestrict}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardState)">
+                    AND card_state = #{map.cardState}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCardCoupon" parameterType="com.hzit.dao.entity.CardCoupon">
+        INSERT INTO card_coupons(
+        <include refid="cardCouponBaseColumnSql"/>
+        )VALUES(
+            #{cardId},
+            #{cardUuid},
+            #{cardName},
+            #{cardBigPicUrl},
+            #{cardSmallPicUrl},
+            #{cardTypeId},
+            #{cardStartTime},
+            #{cardEndTime},
+            #{cardStock},
+            #{cardRestrict},
+            #{cardState}
+        )
+    </insert>
+
+    
+    <delete id="deleteCardCouponByCardId" parameterType="Integer">
+        DELETE FROM card_coupons WHERE card_id = #{cardId}
+    </delete>
+
+    <update id="updateCardCoupon" parameterType="com.hzit.dao.entity.CardCoupon">
+        UPDATE card_coupons
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardUuid)">
+                card_uuid = #{cardUuid} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardName)">
+                card_name = #{cardName} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardBigPicUrl)">
+                card_big_pic_url = #{cardBigPicUrl} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardSmallPicUrl)">
+                card_small_pic_url = #{cardSmallPicUrl} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardTypeId)">
+                card_type_id = #{cardTypeId} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardStartTime)">
+                card_start_time = #{cardStartTime} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardEndTime)">
+                card_end_time = #{cardEndTime} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardStock)">
+                card_stock = #{cardStock} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardRestrict)">
+                card_restrict = #{cardRestrict} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardState)">
+                card_state = #{cardState} ,
+            </if>
+        </set>
+        WHERE card_id = #{cardId}
+    </update>
+
+    <select id="searchCardCouponByParams" parameterType="map" resultMap="cardCouponMap">
+        SELECT
+        <include refid="cardCouponBaseColumnSql"/>
+        FROM card_coupons
+        <include refid="cardCouponBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hzit.dao.entity.CardCoupon" id="cardCouponMap">
+        <id column="card_id" property="cardId"/>
+        <result column="card_uuid" property="cardUuid"/>
+        <result column="card_name" property="cardName"/>
+        <result column="card_big_pic_url" property="cardBigPicUrl"/>
+        <result column="card_small_pic_url" property="cardSmallPicUrl"/>
+        <result column="card_type_id" property="cardTypeId"/>
+        <result column="card_start_time" property="cardStartTime"/>
+        <result column="card_end_time" property="cardEndTime"/>
+        <result column="card_stock" property="cardStock"/>
+        <result column="card_restrict" property="cardRestrict"/>
+        <result column="card_state" property="cardState"/>
+    </resultMap>
+
+</mapper>

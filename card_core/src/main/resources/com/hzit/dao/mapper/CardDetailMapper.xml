@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzit.dao.mapper.CardDetailMapper">
+
+    <sql id="cardDetailBaseColumnSql">
+        card_detail_id,
+        card_detail_uuid,
+        card_id,
+        user_id,
+        card_detail_receive_time,
+        card_state
+    </sql>
+
+    <sql id="cardDetailBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardDetailId)">
+                    card_detail_id = #{map.cardDetailId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardDetailUuid)">
+                    AND card_detail_uuid = #{map.cardDetailUuid}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardId)">
+                    AND card_id = #{map.cardId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userId)">
+                    AND user_id = #{map.userId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardDetailReceiveTime)">
+                    AND card_detail_receive_time = #{map.cardDetailReceiveTime}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardState)">
+                    AND card_state = #{map.cardState}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCardDetail" parameterType="com.hzit.dao.entity.CardDetail">
+        INSERT INTO card_detail(
+        <include refid="cardDetailBaseColumnSql"/>
+        )VALUES(
+            #{cardDetailId},
+            #{cardDetailUuid},
+            #{cardId},
+            #{userId},
+            #{cardDetailReceiveTime},
+            #{cardState}
+        )
+    </insert>
+
+    
+    <delete id="deleteCardDetailByCardDetailId" parameterType="Integer">
+        DELETE FROM card_detail WHERE card_detail_id = #{cardDetailId}
+    </delete>
+
+    <update id="updateCardDetail" parameterType="com.hzit.dao.entity.CardDetail">
+        UPDATE card_detail
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardDetailUuid)">
+                card_detail_uuid = #{cardDetailUuid} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardId)">
+                card_id = #{cardId} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(userId)">
+                user_id = #{userId} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardDetailReceiveTime)">
+                card_detail_receive_time = #{cardDetailReceiveTime} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardState)">
+                card_state = #{cardState} ,
+            </if>
+        </set>
+        WHERE card_detail_id = #{cardDetailId}
+    </update>
+
+    <select id="searchCardDetailByParams" parameterType="map" resultMap="cardDetailMap">
+        SELECT
+        <include refid="cardDetailBaseColumnSql"/>
+        FROM card_detail
+        <include refid="cardDetailBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hzit.dao.entity.CardDetail" id="cardDetailMap">
+        <id column="card_detail_id" property="cardDetailId"/>
+        <result column="card_detail_uuid" property="cardDetailUuid"/>
+        <result column="card_id" property="cardId"/>
+        <result column="user_id" property="userId"/>
+        <result column="card_detail_receive_time" property="cardDetailReceiveTime"/>
+        <result column="card_state" property="cardState"/>
+    </resultMap>
+
+</mapper>
