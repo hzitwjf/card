@@ -23,7 +23,7 @@ public class CardCouponController {
         if(page<=0){
             page=0;
         }
-        Page<CardCoupon> cardCouponPage=cardCouponServices.findByPages(page, 8);
+        Page<CardCoupon> cardCouponPage=cardCouponServices.findByPages(page, 5);
         return cardCouponPage;
     }
 }
