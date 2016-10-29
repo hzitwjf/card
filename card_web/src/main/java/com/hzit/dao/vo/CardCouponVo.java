@@ -32,11 +32,11 @@ public class CardCouponVo {
 	/**
 	 *  有效期开始时间
 	 */
-	private java.util.Date cardStartTime;
+	private String cardStartTime;
 	/**
 	 *  有效期结束时间
 	 */
-	private java.util.Date cardEndTime;
+	private String cardEndTime;
 	/**
 	 *  卡劵库存量
 	 */
@@ -143,7 +143,7 @@ public class CardCouponVo {
 	 * 有效期开始时间
 	 * @param cardStartTime
 	 */
-	public void setCardStartTime(java.util.Date cardStartTime){
+	public void setCardStartTime(String cardStartTime){
 		this.cardStartTime = cardStartTime;
 	}
 	
@@ -151,14 +151,14 @@ public class CardCouponVo {
      * 有效期开始时间
      * @return java.util.Date
      */	
-    public java.util.Date getCardStartTime(){
+    public String getCardStartTime(){
     	return cardStartTime;
     }
 	/**
 	 * 有效期结束时间
 	 * @param cardEndTime
 	 */
-	public void setCardEndTime(java.util.Date cardEndTime){
+	public void setCardEndTime(String cardEndTime){
 		this.cardEndTime = cardEndTime;
 	}
 	
@@ -166,7 +166,7 @@ public class CardCouponVo {
      * 有效期结束时间
      * @return java.util.Date
      */	
-    public java.util.Date getCardEndTime(){
+    public String getCardEndTime(){
     	return cardEndTime;
     }
 	/**

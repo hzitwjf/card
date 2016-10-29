@@ -24,7 +24,7 @@ public class CardDetail {
 	/**
 	 *  卡劵领取时间
 	 */
-	private java.util.Date cardDetailReceiveTime;
+	private String cardDetailReceiveTime;
 	/**
 	 *  卡劵明细状态。0 未使用 1 已使用 2 已过期
 	 */
@@ -93,7 +93,7 @@ public class CardDetail {
 	 * 卡劵领取时间
 	 * @param cardDetailReceiveTime
 	 */
-	public void setCardDetailReceiveTime(java.util.Date cardDetailReceiveTime){
+	public void setCardDetailReceiveTime(String cardDetailReceiveTime){
 		this.cardDetailReceiveTime = cardDetailReceiveTime;
 	}
 	
@@ -101,7 +101,7 @@ public class CardDetail {
      * 卡劵领取时间
      * @return
      */	
-    public java.util.Date getCardDetailReceiveTime(){
+    public String getCardDetailReceiveTime(){
     	return cardDetailReceiveTime;
     }
 	/**
