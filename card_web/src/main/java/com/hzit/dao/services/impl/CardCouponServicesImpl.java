@@ -5,7 +5,6 @@ import com.fc.platform.commons.page.PageRequest;
 import com.hzit.dao.entity.CardCoupon;
 import com.hzit.dao.mapper.CardCouponMapper;
 import com.hzit.dao.services.CardCouponServices;
-import com.hzit.dao.vo.CardCouponVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
