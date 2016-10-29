@@ -1,5 +1,8 @@
 package com.hzit.dao.services.impl;
 
+import com.fc.platform.commons.page.Page;
+import com.fc.platform.commons.page.PageRequest;
+import com.hzit.dao.entity.CardCoupon;
 import com.hzit.dao.mapper.CardCouponMapper;
 import com.hzit.dao.services.CardCouponServices;
 import com.hzit.dao.vo.CardCouponVo;
@@ -15,9 +18,11 @@ import java.util.List;
 public class CardCouponServicesImpl implements CardCouponServices{
     @Autowired
     private CardCouponMapper cardCouponMapper;
+
     @Override
-    public List<CardCouponVo> findByPages() {
-        cardCouponMapper.searchCardCouponByParams(null);
-        return null;
+    public Page<CardCoupon> findByPages(int page, int rowCount) {
+        PageRequest pageRequest=new PageRequest(page,rowCount);
+        Page<CardCoupon> cardCouponPage=cardCouponMapper.searchCardCouponByParams(null, pageRequest);
+        return cardCouponPage;
     }
 }
