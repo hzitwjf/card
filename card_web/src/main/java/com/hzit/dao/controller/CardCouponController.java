@@ -3,6 +3,7 @@ package com.hzit.dao.controller;
 import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.CardCoupon;
 import com.hzit.dao.services.CardCouponServices;
+import com.hzit.dao.vo.CardCouponVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,14 @@ public class CardCouponController {
         if(page<=0){
             page=0;
         }
-        Page<CardCoupon> cardCouponPage=cardCouponServices.findByPages(page, 5);
-        return cardCouponPage;
+        Page<CardCouponVo> cardCouponVoPage=cardCouponServices.findByPages(page, 5);
+        return cardCouponVoPage;
+    }
+    @RequestMapping("/findOneCardCoupon")
+    @ResponseBody
+    public  Object findOneCardCoupon(@RequestParam("cardUuid")String cardUuid){
+       CardCouponVo cardCouponVo=cardCouponServices.findOneCardCoupon(cardUuid);
+        System.out.println(cardCouponVo.toString());
+        return cardCouponVo;
     }
 }

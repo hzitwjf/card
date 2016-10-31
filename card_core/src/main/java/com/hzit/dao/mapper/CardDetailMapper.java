@@ -3,6 +3,7 @@ package com.hzit.dao.mapper;
 import java.util.List;
 import java.util.Map;
 
+import com.hzit.dao.vo.CardDetailVo;
 import org.apache.ibatis.annotations.Param;
 import com.hzit.dao.entity.CardDetail;
 import com.fc.platform.commons.page.Page;
@@ -16,8 +17,8 @@ public interface CardDetailMapper {
 
 	void updateCardDetail(CardDetail cardDetail);
 
-	Page<CardDetail> searchCardDetailByParams(@Param("map") Map<String, String> map, Pageable pageable);
+	Page<CardDetailVo> searchCardDetailByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
-	List<CardDetail> searchCardDetailByParams(@Param("map") Map<String, String> map);
+	List<CardDetailVo> searchCardDetailByParams(@Param("map") Map<String, String> map);
 
 } 

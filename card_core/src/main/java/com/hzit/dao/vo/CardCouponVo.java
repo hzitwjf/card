@@ -1,5 +1,7 @@
 package com.hzit.dao.vo;
 
+import com.hzit.dao.entity.CardType;
+
 /**
  * 
  * @author wjf
@@ -49,6 +51,10 @@ public class CardCouponVo {
 	 *  卡劵状态 0无效 1有效
 	 */
 	private String cardState;
+	/**
+	 * 卡劵类型名字
+	 */
+	private CardType cardType;
 	/**
 	 * 卡劵ID。主键自增
 	 * @param cardId
@@ -215,6 +221,14 @@ public class CardCouponVo {
     	return cardState;
     }
 
+	public CardType getCardType() {
+		return cardType;
+	}
+
+	public void setCardType(CardType cardType) {
+		this.cardType = cardType;
+	}
+
 	@Override
 	public String toString() {
 		return "CardCouponVo{" +
@@ -224,11 +238,12 @@ public class CardCouponVo {
 				", cardBigPicUrl='" + cardBigPicUrl + '\'' +
 				", cardSmallPicUrl='" + cardSmallPicUrl + '\'' +
 				", cardTypeId=" + cardTypeId +
-				", cardStartTime=" + cardStartTime +
-				", cardEndTime=" + cardEndTime +
+				", cardStartTime='" + cardStartTime + '\'' +
+				", cardEndTime='" + cardEndTime + '\'' +
 				", cardStock=" + cardStock +
 				", cardRestrict=" + cardRestrict +
 				", cardState='" + cardState + '\'' +
+				", cardType=" + cardType +
 				'}';
 	}
 }

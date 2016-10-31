@@ -3,6 +3,7 @@ package com.hzit.dao.mapper;
 import java.util.List;
 import java.util.Map;
 
+import com.hzit.dao.vo.CardCouponVo;
 import org.apache.ibatis.annotations.Param;
 import com.hzit.dao.entity.CardCoupon;
 import com.fc.platform.commons.page.Page;
@@ -16,8 +17,8 @@ public interface CardCouponMapper {
 
 	void updateCardCoupon(CardCoupon cardCoupon);
 
-	Page<CardCoupon> searchCardCouponByParams(@Param("map") Map<String, String> map, Pageable pageable);
+	Page<CardCouponVo> searchCardCouponByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
-	List<CardCoupon> searchCardCouponByParams(@Param("map") Map<String, String> map);
+	List<CardCouponVo> searchCardCouponByParams(@Param("map") Map<String, String> map);
 
 } 

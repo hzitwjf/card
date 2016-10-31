@@ -16,22 +16,22 @@
         <if test="map!=null">
             <where>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardDetailId)">
-                    card_detail_id = #{map.cardDetailId}
+                    card_detail.card_detail_id = #{map.cardDetailId}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardDetailUuid)">
-                    AND card_detail_uuid = #{map.cardDetailUuid}
+                    AND card_detail.card_detail_uuid = #{map.cardDetailUuid}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardId)">
-                    AND card_id = #{map.cardId}
+                    AND card_detail.card_id = #{map.cardId}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userId)">
-                    AND user_id = #{map.userId}
+                    AND card_detail.user_id = #{map.userId}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardDetailReceiveTime)">
-                    AND card_detail_receive_time = #{map.cardDetailReceiveTime}
+                    AND card_detail.card_detail_receive_time = #{map.cardDetailReceiveTime}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardState)">
-                    AND card_state = #{map.cardState}
+                    AND card_detail.card_state = #{map.cardState}
                 </if>
             </where>
         </if>
@@ -78,19 +78,25 @@
     </update>
 
     <select id="searchCardDetailByParams" parameterType="map" resultMap="cardDetailMap">
-        SELECT
-        <include refid="cardDetailBaseColumnSql"/>
-        FROM card_detail
+        SELECT card_detail.card_detail_id,card_detail.card_detail_uuid,card_detail.user_id,
+        card_detail.card_detail_receive_time,card_detail.card_id,card_type.card_type_name,
+        card_detail.card_state
+        FROM card_detail JOIN card_coupons ON card_coupons.card_uuid=card_detail.card_id
+        JOIN  card_type ON card_coupons.card_type_id=card_type.card_type_id
         <include refid="cardDetailBaseWhereSql"/>
     </select>
 
-    <resultMap type="com.hzit.dao.entity.CardDetail" id="cardDetailMap">
+    <resultMap type="com.hzit.dao.vo.CardDetailVo" id="cardDetailMap">
         <id column="card_detail_id" property="cardDetailId"/>
         <result column="card_detail_uuid" property="cardDetailUuid"/>
         <result column="card_id" property="cardId"/>
         <result column="user_id" property="userId"/>
         <result column="card_detail_receive_time" property="cardDetailReceiveTime"/>
         <result column="card_state" property="cardState"/>
+        <association property="cardType" javaType="com.hzit.dao.entity.CardType" >
+            <result column="card_type_id" property="cardTypeId"></result>
+            <result column="card_type_name" property="cardTypeName"></result>
+        </association>
     </resultMap>
 
 </mapper>

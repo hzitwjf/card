@@ -1,5 +1,10 @@
 package com.hzit.dao.vo;
 
+import com.hzit.dao.entity.CardType;
+
+import java.util.AbstractSet;
+import java.util.LinkedList;
+
 /**
  * 
  * @author wjf
@@ -29,6 +34,10 @@ public class CardDetailVo {
 	 *  卡劵明细状态。0 未使用 1 已使用 2 已过期
 	 */
 	private String cardState;
+	/**
+	 * 卡劵类型
+	 */
+	private CardType cardType;
 	/**
 	 * 卡劵详情ID，主键，自增
 	 * @param cardDetailId
@@ -120,6 +129,22 @@ public class CardDetailVo {
     	return cardState;
     }
 
+	/**
+	 * 卡劵类型
+	 * @return
+	 */
+	public CardType getCardType() {
+		return cardType;
+	}
+
+	/**
+	 * 卡劵类型
+	 * @param cardType
+	 */
+	public void setCardType(CardType cardType) {
+		this.cardType = cardType;
+	}
+
 	@Override
 	public String toString() {
 		return "CardDetailVo{" +
@@ -127,8 +152,9 @@ public class CardDetailVo {
 				", cardDetailUuid='" + cardDetailUuid + '\'' +
 				", cardId='" + cardId + '\'' +
 				", userId='" + userId + '\'' +
-				", cardDetailReceiveTime=" + cardDetailReceiveTime +
+				", cardDetailReceiveTime='" + cardDetailReceiveTime + '\'' +
 				", cardState='" + cardState + '\'' +
+				", cardType=" + cardType +
 				'}';
 	}
 }

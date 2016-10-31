@@ -5,6 +5,7 @@ import com.fc.platform.commons.page.Page;
 import com.hzit.dao.StartSpring;
 import com.hzit.dao.entity.CardCoupon;
 import com.hzit.dao.services.CardCouponServices;
+import com.hzit.dao.vo.CardCouponVo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,16 @@ public class TestCardCouponService {
     private CardCouponServices cardCouponServices;
     @Test
     public void findByPages(){
-        Page<CardCoupon> cardCouponPage=cardCouponServices.findByPages(0,2);
-        for (CardCoupon cardCoupon : cardCouponPage ){
-            System.out.println(cardCoupon.toString());
+        Page<CardCouponVo> cardCouponPage=cardCouponServices.findByPages(0,10);
+        for (CardCouponVo cardCouponVo : cardCouponPage ){
+            System.out.println(cardCouponVo.toString());
         }
         System.out.println("总页数："+cardCouponPage.getTotalPages());
         System.out.println("总行数："+cardCouponPage.getTotalElements());
+    }
+    @Test
+    public void findOneCardCoupon(){
+        CardCouponVo cardCouponVo=cardCouponServices.findOneCardCoupon("83304e29-efb1-4851-84b0-7af691742713");
+        System.out.println(cardCouponVo.toString());
     }
 }

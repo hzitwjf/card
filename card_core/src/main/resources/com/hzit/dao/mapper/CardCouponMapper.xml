@@ -21,37 +21,37 @@
         <if test="map!=null">
             <where>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardId)">
-                    card_id = #{map.cardId}
+                    card_coupons.card_id = #{map.cardId}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardUuid)">
-                    AND card_uuid = #{map.cardUuid}
+                    AND card_coupons.card_uuid = #{map.cardUuid}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardName)">
-                    AND card_name = #{map.cardName}
+                    AND card_coupons.card_name = #{map.cardName}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardBigPicUrl)">
-                    AND card_big_pic_url = #{map.cardBigPicUrl}
+                    AND card_coupons.card_big_pic_url = #{map.cardBigPicUrl}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardSmallPicUrl)">
-                    AND card_small_pic_url = #{map.cardSmallPicUrl}
+                    AND card_coupons.card_small_pic_url = #{map.cardSmallPicUrl}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardTypeId)">
-                    AND card_type_id = #{map.cardTypeId}
+                    AND card_coupons.card_type_id = #{map.cardTypeId}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardStartTime)">
-                    AND card_start_time = #{map.cardStartTime}
+                    AND card_coupons.card_start_time = #{map.cardStartTime}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardEndTime)">
-                    AND card_end_time = #{map.cardEndTime}
+                    AND card_coupons.card_end_time = #{map.cardEndTime}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardStock)">
-                    AND card_stock = #{map.cardStock}
+                    AND card_coupons.card_stock = #{map.cardStock}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardRestrict)">
-                    AND card_restrict = #{map.cardRestrict}
+                    AND card_coupons.card_restrict = #{map.cardRestrict}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.cardState)">
-                    AND card_state = #{map.cardState}
+                    AND card_coupons.card_state = #{map.cardState}
                 </if>
             </where>
         </if>
@@ -117,14 +117,15 @@
         WHERE card_id = #{cardId}
     </update>
 
-    <select id="searchCardCouponByParams" parameterType="map" resultMap="cardCouponMap">
-        SELECT
-        <include refid="cardCouponBaseColumnSql"/>
-        FROM card_coupons
+    <select id="searchCardCouponByParams" parameterType="map" resultMap="cardCouponVoMap">
+        SELECT  card_coupons.card_id,card_coupons.card_uuid,card_coupons.card_name,card_coupons.card_big_pic_url,
+        card_coupons.card_small_pic_url,card_type.card_type_name,card_coupons.card_start_time,
+        card_coupons.card_end_time,card_coupons.card_stock,card_coupons.card_restrict,card_coupons.card_state
+        FROM card_coupons JOIN card_type ON  card_coupons.card_type_id=card_type.card_type_id
         <include refid="cardCouponBaseWhereSql"/>
     </select>
 
-    <resultMap type="com.hzit.dao.entity.CardCoupon" id="cardCouponMap">
+    <resultMap type="com.hzit.dao.vo.CardCouponVo" id="cardCouponVoMap">
         <id column="card_id" property="cardId"/>
         <result column="card_uuid" property="cardUuid"/>
         <result column="card_name" property="cardName"/>
@@ -136,6 +137,10 @@
         <result column="card_stock" property="cardStock"/>
         <result column="card_restrict" property="cardRestrict"/>
         <result column="card_state" property="cardState"/>
+        <association property="cardType" javaType="com.hzit.dao.entity.CardType" >
+            <result column="card_type_id" property="cardTypeId"></result>
+            <result column="card_type_name" property="cardTypeName"></result>
+        </association>
     </resultMap>
 
 </mapper>
