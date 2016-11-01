@@ -56,7 +56,6 @@ public class TestCardCouponService {
         cardCoupon.setCardEndTime("2016-08-01 21:00:00");
         cardCoupon.setCardStock(100);
         cardCoupon.setCardRestrict(1);
-        cardCoupon.setCardState("1");
         int i=cardCouponServices.insertCardCoupon(cardCoupon);
         System.out.println(i);
     }

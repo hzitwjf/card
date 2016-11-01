@@ -56,6 +56,7 @@ public class CardCouponServicesImpl implements CardCouponServices{
     public int insertCardCoupon(CardCoupon cardCoupon) {
         try {
             cardCoupon.setCardUuid(UUID.randomUUID().toString());
+            cardCoupon.setCardState("1");
             cardCouponMapper.insertCardCoupon(cardCoupon);
             return  1;
         }catch (Exception ex){

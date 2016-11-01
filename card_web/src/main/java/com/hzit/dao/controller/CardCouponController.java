@@ -43,4 +43,8 @@ public class CardCouponController {
         int i=cardCouponServices.insertCardCoupon(cardCoupon);
         return i;
     }
+    @RequestMapping("/toInsetCardCoupon")
+    public  String toInsetCardCoupon(CardCoupon cardCoupon){
+        return "addCardCoupon";
+    }
 }
