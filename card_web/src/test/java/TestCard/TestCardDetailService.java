@@ -52,4 +52,13 @@ public class TestCardDetailService {
         String cardUuid="53304e29-efb1-4851-84b0-7af691742713";
         cardDetailService.addCardDetail(cardUuid);
     }
+    @Test
+    public void findCardDetailByCardState(){
+        String userId="张三";
+        String cardState="0";
+        List<CardDetailVo> cardDetailVoList=cardDetailService.findCardDetailByCardState(userId, cardState);
+        for (CardDetailVo cardDetailVo : cardDetailVoList){
+            System.out.println(cardDetailVo.toString());
+        }
+    }
 }

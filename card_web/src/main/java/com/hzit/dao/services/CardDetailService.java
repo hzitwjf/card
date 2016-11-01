@@ -42,4 +42,12 @@ public interface CardDetailService {
      * @return  返回当前用户领取该卡劵的次数！
      */
     int findCount(String userId,String cardId);
+
+    /**
+     * 根据用户Id和卡劵状态来查询领取详情表
+     * @param userId 用户ID
+     * @param cardState  卡劵状态
+     * @return  一个放有卡劵实体类的集合
+     */
+    List<CardDetailVo> findCardDetailByCardState(String userId,String cardState);
 }

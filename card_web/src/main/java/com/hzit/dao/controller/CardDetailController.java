@@ -40,4 +40,9 @@ public class CardDetailController {
     public Object insertDetailByCardUuid(@RequestParam("cardUuid")String cardUuid){
        return  cardDetailService.addCardDetail(cardUuid);
     }
+    @RequestMapping("findMyPackage")
+    @ResponseBody
+    public Object findCardDetailByCardState(@RequestParam("userId")String userId,@RequestParam(name="cardState",defaultValue = "0")String cardState){
+        return  cardDetailService.findCardDetailByCardState(userId,cardState);
+    }
 }

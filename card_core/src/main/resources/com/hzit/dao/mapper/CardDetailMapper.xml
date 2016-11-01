@@ -79,7 +79,7 @@
 
     <select id="searchCardDetailByParams" parameterType="map" resultMap="cardDetailMap">
         SELECT card_detail.card_detail_id,card_detail.card_detail_uuid,card_detail.user_id,
-        card_detail.card_detail_receive_time,card_detail.card_id,card_type.card_type_name,
+        card_detail.card_detail_receive_time,card_detail.card_id,card_type.*,
         card_detail.card_state
         FROM card_detail JOIN card_coupons ON card_coupons.card_uuid=card_detail.card_id
         JOIN  card_type ON card_coupons.card_type_id=card_type.card_type_id

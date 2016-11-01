@@ -80,4 +80,13 @@ public class CardDetailServicesImpl implements CardDetailService {
     public int findCount(String userId,String cardId) {
         return cardDetailMapper.findCount(userId,cardId);
     }
+
+    @Override
+    public List<CardDetailVo> findCardDetailByCardState(String userId,String cardState) {
+        Map map=new HashMap();
+        map.put("userId",userId);
+        map.put("cardState",cardState);
+        List<CardDetailVo> cardDetailVoList=cardDetailMapper.searchCardDetailByParams(map);
+        return cardDetailVoList;
+    }
 }
