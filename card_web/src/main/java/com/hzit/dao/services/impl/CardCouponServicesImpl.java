@@ -50,4 +50,15 @@ public class CardCouponServicesImpl implements CardCouponServices{
             return -1;
         }
     }
+
+    @Override
+    public int insertCardCoupon(CardCoupon cardCoupon) {
+        try {
+            cardCouponMapper.insertCardCoupon(cardCoupon);
+            return  1;
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return -1;
+        }
+    }
 }

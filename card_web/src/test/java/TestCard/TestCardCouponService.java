@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-
+import java.util.UUID;
 
 
 /**
@@ -38,11 +38,27 @@ public class TestCardCouponService {
         System.out.println(cardCouponVo.toString());
     }
     @Test
-    public void UpdateCardCoupon(){
+    public void updateCardCoupon(){
         CardCoupon cardCoupon=new CardCoupon();
         cardCoupon.setCardStock(0);
         cardCoupon.setCardId(2);
         int i=cardCouponServices.updateCardCoupon(cardCoupon);
+        System.out.println(i);
+    }
+    @Test
+    public void insertCardCoupon(){
+        CardCoupon cardCoupon=new CardCoupon();
+        cardCoupon.setCardUuid(UUID.randomUUID().toString());
+        cardCoupon.setCardName("生活用品");
+        cardCoupon.setCardBigPicUrl("images/星空1.jpg");
+        cardCoupon.setCardSmallPicUrl("images/星空2.jpg");
+        cardCoupon.setCardTypeId(2);
+        cardCoupon.setCardStartTime("2016-07-01 21:00:00");
+        cardCoupon.setCardEndTime("2016-08-01 21:00:00");
+        cardCoupon.setCardStock(100);
+        cardCoupon.setCardRestrict(1);
+        cardCoupon.setCardState("1");
+        int i=cardCouponServices.insertCardCoupon(cardCoupon);
         System.out.println(i);
     }
 }

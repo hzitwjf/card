@@ -25,10 +25,16 @@ public interface CardCouponServices {
     CardCouponVo findOneCardCoupon(String cardUuid);
 
     /**
-     * 根据卡劵实体对象修改卡劵表
+     * 根据传进来的卡劵实体对象修改卡劵表
      * @param cardCoupon  卡劵实体类
      * @return  返回int类型数据 1代表成功，0代表失败；
      */
     int updateCardCoupon(CardCoupon cardCoupon);
 
+    /**
+     * 根据传进来的卡劵实体类对象在数据库增加相应的记录
+     * @param cardCoupon  卡劵实体类
+     * @return  返回int类型数据 1代表成功，0代表失败；
+     */
+    int insertCardCoupon(CardCoupon cardCoupon);
 }

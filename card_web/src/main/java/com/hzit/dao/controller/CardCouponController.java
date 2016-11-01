@@ -37,4 +37,10 @@ public class CardCouponController {
         httpSession.setAttribute("cardCouponVo",cardCouponVo);
         return cardCouponVo;
     }
+    @RequestMapping("/insetCardCoupon")
+    @ResponseBody
+    public  int insetCardCoupon(CardCoupon cardCoupon){
+        int i=cardCouponServices.insertCardCoupon(cardCoupon);
+        return i;
+    }
 }
