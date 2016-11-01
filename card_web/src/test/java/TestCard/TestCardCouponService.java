@@ -48,7 +48,6 @@ public class TestCardCouponService {
     @Test
     public void insertCardCoupon(){
         CardCoupon cardCoupon=new CardCoupon();
-        cardCoupon.setCardUuid(UUID.randomUUID().toString());
         cardCoupon.setCardName("生活用品");
         cardCoupon.setCardBigPicUrl("images/星空1.jpg");
         cardCoupon.setCardSmallPicUrl("images/星空2.jpg");

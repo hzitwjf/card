@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by Administrator on 2016/10/29.
@@ -54,6 +55,7 @@ public class CardCouponServicesImpl implements CardCouponServices{
     @Override
     public int insertCardCoupon(CardCoupon cardCoupon) {
         try {
+            cardCoupon.setCardUuid(UUID.randomUUID().toString());
             cardCouponMapper.insertCardCoupon(cardCoupon);
             return  1;
         }catch (Exception ex){
