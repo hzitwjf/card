@@ -85,7 +85,10 @@
         JOIN  card_type ON card_coupons.card_type_id=card_type.card_type_id
         <include refid="cardDetailBaseWhereSql"/>
     </select>
-
+    <select id="findCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+      SELECT COUNT(0) FROM card_detail WHERE user_id=#{userId}
+      AND card_id=#{cardId};
+    </select>
     <resultMap type="com.hzit.dao.vo.CardDetailVo" id="cardDetailMap">
         <id column="card_detail_id" property="cardDetailId"/>
         <result column="card_detail_uuid" property="cardDetailUuid"/>

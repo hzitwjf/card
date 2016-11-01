@@ -1,6 +1,7 @@
 package com.hzit.dao.services;
 
 import com.fc.platform.commons.page.Page;
+import com.hzit.dao.entity.CardCoupon;
 import com.hzit.dao.vo.CardCouponVo;
 
 
@@ -15,5 +16,13 @@ public interface CardCouponServices {
      * @return  返回一个封装过后可迭代的卡劵实体（CardCoupon）集合
      */
     Page<CardCouponVo> findByPages(int page,int rowCount);
+
+    /**
+     * 根据卡劵业务Id查询卡劵详细信息
+     * @param cardUuid  卡劵yewuID
+     * @return  返回卡劵实体对象
+     */
     CardCouponVo findOneCardCoupon(String cardUuid);
+    int updateCardCoupon(CardCoupon cardCoupon);
+
 }

@@ -37,4 +37,12 @@ public class TestCardCouponService {
         CardCouponVo cardCouponVo=cardCouponServices.findOneCardCoupon("83304e29-efb1-4851-84b0-7af691742713");
         System.out.println(cardCouponVo.toString());
     }
+    @Test
+    public void UpdateCardCoupon(){
+        CardCoupon cardCoupon=new CardCoupon();
+        cardCoupon.setCardStock(0);
+        cardCoupon.setCardId(2);
+        int i=cardCouponServices.updateCardCoupon(cardCoupon);
+        System.out.println(i);
+    }
 }

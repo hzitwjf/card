@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by Administrator on 2016/10/29.
  */
@@ -29,9 +31,10 @@ public class CardCouponController {
     }
     @RequestMapping("/findOneCardCoupon")
     @ResponseBody
-    public  Object findOneCardCoupon(@RequestParam("cardUuid")String cardUuid){
+    public  Object findOneCardCoupon(@RequestParam("cardUuid")String cardUuid,HttpSession httpSession){
        CardCouponVo cardCouponVo=cardCouponServices.findOneCardCoupon(cardUuid);
         System.out.println(cardCouponVo.toString());
+        httpSession.setAttribute("cardCouponVo",cardCouponVo);
         return cardCouponVo;
     }
 }

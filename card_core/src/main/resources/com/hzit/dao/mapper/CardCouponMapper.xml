@@ -95,7 +95,7 @@
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardSmallPicUrl)">
                 card_small_pic_url = #{cardSmallPicUrl} ,
             </if>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardTypeId)">
+            <if test="cardTypeId!=null">
                 card_type_id = #{cardTypeId} ,
             </if>
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardStartTime)">
@@ -104,13 +104,13 @@
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardEndTime)">
                 card_end_time = #{cardEndTime} ,
             </if>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardStock)">
+            <if test="cardStock!=null">
                 card_stock = #{cardStock} ,
             </if>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardRestrict)">
+            <if test="cardRestrict!=null">
                 card_restrict = #{cardRestrict} ,
             </if>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(cardState)">
+            <if test="cardState!=null">
                 card_state = #{cardState} ,
             </if>
         </set>

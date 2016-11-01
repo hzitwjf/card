@@ -20,5 +20,6 @@ public interface CardDetailMapper {
 	Page<CardDetailVo> searchCardDetailByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
 	List<CardDetailVo> searchCardDetailByParams(@Param("map") Map<String, String> map);
+	Integer findCount(@Param("userId")String userId,@Param("cardId")String cardId);
 
 } 

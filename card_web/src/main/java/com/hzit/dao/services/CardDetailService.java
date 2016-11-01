@@ -1,6 +1,7 @@
 package com.hzit.dao.services;
 
 import com.fc.platform.commons.page.Page;
+import com.hzit.dao.entity.CardCoupon;
 import com.hzit.dao.entity.CardDetail;
 import com.hzit.dao.vo.CardDetailVo;
 
@@ -20,4 +21,6 @@ public interface CardDetailService {
      */
     Page<CardDetailVo> findDetailByCardId(String cardUuid,int page,int rowCount);
     List<CardDetailVo> findDetailByUserId(String userId);
+    Object addCardDetail(CardDetail cardDetail,CardCoupon cardCoupon);
+    int findCount(String userId,String cardId);
 }

@@ -34,10 +34,17 @@ public class TestCardDetailService {
         System.out.println("总行数："+cardDetailPage.getTotalElements());
     }
     @Test
-    public void findDetailByUserId(){
-      List<CardDetailVo> cardDetailList= cardDetailService.findDetailByUserId("a4fc6ba2-1c14-4743-a1a5-5b22553644f9");
-      for (CardDetailVo cardDetail : cardDetailList ){
-          System.out.println(cardDetail.toString());
-      }
+     public void findDetailByUserId(){
+        List<CardDetailVo> cardDetailList= cardDetailService.findDetailByUserId("a4fc6ba2-1c14-4743-a1a5-5b22553644f9");
+        for (CardDetailVo cardDetail : cardDetailList ){
+            System.out.println(cardDetail.toString());
+        }
+    }
+    @Test
+    public void findCount(){
+        String userId="a4fc6ba2-1c14-4743-a1a5-5b22553644f9";
+        String cardId="83304e29-efb1-4851-84b0-7af691742713";
+        int i= cardDetailService.findCount(userId,cardId);
+        System.out.println(i);
     }
 }

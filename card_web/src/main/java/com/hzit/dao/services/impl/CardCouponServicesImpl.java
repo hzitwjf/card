@@ -39,4 +39,15 @@ public class CardCouponServicesImpl implements CardCouponServices{
             return null;
         }
     }
+
+    @Override
+    public int updateCardCoupon(CardCoupon cardCoupon) {
+        try {
+            cardCouponMapper.updateCardCoupon(cardCoupon);
+            return 1;
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return -1;
+        }
+    }
 }

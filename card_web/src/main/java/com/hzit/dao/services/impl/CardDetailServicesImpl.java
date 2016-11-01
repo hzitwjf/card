@@ -2,12 +2,14 @@ package com.hzit.dao.services.impl;
 
 import com.fc.platform.commons.page.Page;
 import com.fc.platform.commons.page.PageRequest;
+import com.hzit.dao.entity.CardCoupon;
 import com.hzit.dao.entity.CardDetail;
 import com.hzit.dao.mapper.CardDetailMapper;
 import com.hzit.dao.services.CardDetailService;
 import com.hzit.dao.vo.CardDetailVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,5 +37,17 @@ public class CardDetailServicesImpl implements CardDetailService {
         map.put("userId",userId);
         List<CardDetailVo> cardDetailVoList=cardDetailMapper.searchCardDetailByParams(map);
         return cardDetailVoList;
+    }
+
+    @Override
+    @Transactional
+    public Object addCardDetail(CardDetail cardDetail, CardCoupon cardCoupon) {
+
+        return 0;
+    }
+
+    @Override
+    public int findCount(String userId,String cardId) {
+        return cardDetailMapper.findCount(userId,cardId);
     }
 }
