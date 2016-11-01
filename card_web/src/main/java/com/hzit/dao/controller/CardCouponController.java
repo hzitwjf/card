@@ -26,7 +26,7 @@ public class CardCouponController {
         if(page<=0){
             page=0;
         }
-        Page<CardCouponVo> cardCouponVoPage=cardCouponServices.findByPages(page, 5);
+        Page<CardCouponVo> cardCouponVoPage=cardCouponServices.findByPages(page, 10);
         return cardCouponVoPage;
     }
     @RequestMapping("/findOneCardCoupon")

@@ -20,7 +20,26 @@ public interface CardDetailService {
      * 并进行封装过后可迭代的卡劵领取详情实体（CardCoupon）集合
      */
     Page<CardDetailVo> findDetailByCardId(String cardUuid,int page,int rowCount);
+
+    /**
+     * 根据用户Id查询卡劵领取详情
+     * @param userId 用户ID
+     * @return 卡劵领取详情的List集合
+     */
     List<CardDetailVo> findDetailByUserId(String userId);
+
+    /**
+     * 增加领取详情
+     * @param cardUuid  根据卡劵的业务ID来增加该卡劵对应的领取详情
+     * @return  放回一个Object 数据类型！
+     */
     Object addCardDetail(String cardUuid);
+
+    /**
+     * 查询当前用户领取该卡劵的次数
+     * @param userId  用户ID
+     * @param cardId  卡劵ID
+     * @return  返回当前用户领取该卡劵的次数！
+     */
     int findCount(String userId,String cardId);
 }

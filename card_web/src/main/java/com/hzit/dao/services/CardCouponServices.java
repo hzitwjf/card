@@ -23,6 +23,12 @@ public interface CardCouponServices {
      * @return  返回卡劵实体对象
      */
     CardCouponVo findOneCardCoupon(String cardUuid);
+
+    /**
+     * 根据卡劵实体对象修改卡劵表
+     * @param cardCoupon  卡劵实体类
+     * @return  返回int类型数据 1代表成功，0代表失败；
+     */
     int updateCardCoupon(CardCoupon cardCoupon);
 
 }

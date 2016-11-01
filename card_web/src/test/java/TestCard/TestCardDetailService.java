@@ -49,7 +49,7 @@ public class TestCardDetailService {
     }
     @Test
     public void insertCardCouponDetail(){
-        String cardUuid="977432f0-22df-4286-91a6-7e3e3cb3ba8e";
+        String cardUuid="53304e29-efb1-4851-84b0-7af691742713";
         cardDetailService.addCardDetail(cardUuid);
     }
 }

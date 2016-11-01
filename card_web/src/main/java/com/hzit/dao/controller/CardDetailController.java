@@ -35,4 +35,9 @@ public class CardDetailController {
        List<CardDetailVo> cardDetailVoList= cardDetailService.findDetailByUserId(userId);
         return cardDetailVoList;
     }
+    @RequestMapping("insertDetailByCardUuid")
+    @ResponseBody
+    public Object insertDetailByCardUuid(@RequestParam("cardUuid")String cardUuid){
+       return  cardDetailService.addCardDetail(cardUuid);
+    }
 }
