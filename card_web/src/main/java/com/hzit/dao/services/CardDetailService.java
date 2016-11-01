@@ -21,6 +21,6 @@ public interface CardDetailService {
      */
     Page<CardDetailVo> findDetailByCardId(String cardUuid,int page,int rowCount);
     List<CardDetailVo> findDetailByUserId(String userId);
-    Object addCardDetail(CardDetail cardDetail,CardCoupon cardCoupon);
+    Object addCardDetail(String cardUuid);
     int findCount(String userId,String cardId);
 }
