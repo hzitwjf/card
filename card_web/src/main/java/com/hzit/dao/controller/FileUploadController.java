@@ -24,8 +24,8 @@ public class FileUploadController {
     }
     @RequestMapping("/hand/upload")
     @ResponseBody
-    public String HandUpload(@RequestParam("name") String name, @RequestParam("file")MultipartFile file, HttpServletRequest httpServletRequest){
-        return fileUploadServices.handleUploadInfo(name,file,httpServletRequest);
+    public String HandUpload(@RequestParam("file")MultipartFile file, HttpServletRequest httpServletRequest){
+        return fileUploadServices.handleUploadInfo(file,httpServletRequest);
     }
 
 }

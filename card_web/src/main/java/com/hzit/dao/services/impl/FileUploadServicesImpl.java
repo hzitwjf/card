@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class FileUploadServicesImpl implements FileUploadServices {
     @Override
-    public String handleUploadInfo(String name, MultipartFile multipartFile, HttpServletRequest httpServletRequest) {
+    public String handleUploadInfo( MultipartFile multipartFile, HttpServletRequest httpServletRequest) {
         try {
             //设置编码格式，解决字符串乱码问题
             httpServletRequest.setCharacterEncoding("utf-8");
@@ -25,6 +25,7 @@ public class FileUploadServicesImpl implements FileUploadServices {
             if(!multipartFile.isEmpty()){
                 //创建字节数组
                 byte [] bytes=multipartFile.getBytes();
+                String name="上传卡券图片";
                 //创建File类，参数是文件名
                 File file=new File(name);
                 //创建文件输出流，参数是File类的对象

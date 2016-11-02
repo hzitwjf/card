@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 public interface FileUploadServices {
     /**
      * 上传单个文件
-     * @param name 传入文件名
      * @param multipartFile springBoot提供上传文件类
      * @param httpServletRequest  客户端发出的请求
      * @return  返回一个String类型的结果
      */
-    String handleUploadInfo(String name, MultipartFile multipartFile, HttpServletRequest httpServletRequest);
+    String handleUploadInfo( MultipartFile multipartFile, HttpServletRequest httpServletRequest);
 }

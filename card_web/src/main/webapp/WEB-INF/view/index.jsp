@@ -28,19 +28,19 @@
         });
       });
       function ajaxFileUpload() {
-        var elementIds=["name"]; //flag为id、name属性名
         $.ajaxFileUpload({
           url: '/hand/upload',
           type: 'post',
           secureuri: false, //一般设置为false
           fileElementId: 'file', // 上传文件的id、name属性名
-          dataType: 'text', //返回值类型，一般设置为json、application/json
-          elementIds: elementIds, //传递参数到服务器
+          dataType: 'json', //返回值类型，一般设置为json、application/json
           success: function(data, status){
-            $("#msg").html(data)
+            //$("#msg").html(data)
+            alert(data);
           },
           error: function(data, status, e){
-            $("#msg").html(data)
+            //$("#msg").html(data)
+            alert(data+status+e);
           }
         });
       }
