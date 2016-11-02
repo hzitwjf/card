@@ -12,7 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by wjf13 on 2016/10/30.
+ * @author wjf
+ * Created  on 2016/10/29.
  */
 @Controller
 public class FileUploadController {

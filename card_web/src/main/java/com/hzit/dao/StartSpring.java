@@ -11,7 +11,8 @@ import org.springframework.context.annotation.ComponentScan;
 import javax.servlet.MultipartConfigElement;
 
 /**
- * Created by Administrator on 2016/10/6.
+ * @author wjf
+ * Created  on 2016/10/29.
  */
 @SpringBootApplication
 @ComponentScan({"com.fc","com.hzit.dao"})

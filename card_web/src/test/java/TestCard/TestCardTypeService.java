@@ -1,12 +1,9 @@
 package TestCard;
 
 
-import com.fc.platform.commons.page.Page;
 import com.hzit.dao.StartSpring;
 import com.hzit.dao.entity.CardType;
-import com.hzit.dao.services.CardDetailService;
 import com.hzit.dao.services.CardTypeServices;
-import com.hzit.dao.vo.CardDetailVo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +14,8 @@ import java.util.List;
 
 
 /**
- * Created by Administrator on 2016/10/26.
+ * @author wjf
+ * Created  on 2016/10/29.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(StartSpring.class)

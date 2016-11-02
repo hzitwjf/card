@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Created by wjf13 on 2016/11/1.
+ * @author wjf
+ * Created  on 2016/10/29.
  */
 @Controller
 @RequestMapping("cardType")

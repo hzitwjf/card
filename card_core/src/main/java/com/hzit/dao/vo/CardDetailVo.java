@@ -6,8 +6,8 @@ import java.util.AbstractSet;
 import java.util.LinkedList;
 
 /**
- * 
  * @author wjf
+ * Created  on 2016/10/29.
  */
 public class CardDetailVo {
 	/**

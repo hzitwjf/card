@@ -36,6 +36,7 @@
           dataType: 'json', //返回值类型，一般设置为json、application/json
           success: function(data, status){
             //$("#msg").html(data)
+            $('#push').css('display','none');
             alert(data);
           },
           error: function(data, status, e){

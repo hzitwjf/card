@@ -3,8 +3,8 @@ package com.hzit.dao.vo;
 import com.hzit.dao.entity.CardType;
 
 /**
- * 
  * @author wjf
+ * Created  on 2016/10/29.
  */
 public class CardCouponVo {
 	/**

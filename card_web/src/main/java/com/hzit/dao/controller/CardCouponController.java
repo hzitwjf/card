@@ -13,19 +13,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by Administrator on 2016/10/29.
+ * @author wjf
+ * Created  on 2016/10/29.
  */
 @Controller
 @RequestMapping("cardCoupon")
 public class CardCouponController {
     @Autowired
     private CardCouponServices cardCouponServices;
+
+    /**
+     * 分页查询卡券信息表
+     * @param page page参数代表当前页面的页数，默认是为0
+     * @return 返回当前页面所有的卡券信息的JSON字符串
+     */
     @RequestMapping("/findByPage")
     @ResponseBody
     public  Object findByPage(@RequestParam(name="page",defaultValue = "0")Integer page){
         if(page<=0){
             page=0;
         }
+        /**
+         * page是页数；
+         * 10代表一页显示多少行；
+         */
         Page<CardCouponVo> cardCouponVoPage=cardCouponServices.findByPages(page, 10);
         return cardCouponVoPage;
     }

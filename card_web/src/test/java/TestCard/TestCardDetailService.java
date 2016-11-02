@@ -3,8 +3,6 @@ package TestCard;
 
 import com.fc.platform.commons.page.Page;
 import com.hzit.dao.StartSpring;
-import com.hzit.dao.entity.CardCoupon;
-import com.hzit.dao.entity.CardDetail;
 import com.hzit.dao.services.CardDetailService;
 import com.hzit.dao.vo.CardDetailVo;
 import org.junit.Test;
@@ -17,7 +15,8 @@ import java.util.List;
 
 
 /**
- * Created by Administrator on 2016/10/26.
+ * @author wjf
+ * Created  on 2016/10/29.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(StartSpring.class)
