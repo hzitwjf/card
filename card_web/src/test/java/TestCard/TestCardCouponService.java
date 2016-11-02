@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -58,5 +59,12 @@ public class TestCardCouponService {
         cardCoupon.setCardRestrict(1);
         int i=cardCouponServices.insertCardCoupon(cardCoupon);
         System.out.println(i);
+    }
+    @Test
+    public void findByLike(){
+        List<CardCouponVo> cardCouponVoList=cardCouponServices.findByCardName("测试");
+        for (CardCouponVo cardCouponVo : cardCouponVoList){
+            System.out.println(cardCouponVo.getCardName());
+        }
     }
 }

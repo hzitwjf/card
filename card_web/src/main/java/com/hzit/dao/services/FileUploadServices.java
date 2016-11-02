@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface FileUploadServices {
     /**
-     * 根据页面所发过来的图片信息进行增加图片
-     * @param httpServletRequest  客户端浏览器发出的请求
-     * @return  返回一个Object类型的数据！
+     * 上传单个文件
+     * @param name 传入文件名
+     * @param multipartFile springBoot提供上传文件类
+     * @param httpServletRequest  客户端发出的请求
+     * @return  返回一个String类型的结果
      */
-    Object handleUploadInfo(HttpServletRequest httpServletRequest);
+    String handleUploadInfo(String name, MultipartFile multipartFile, HttpServletRequest httpServletRequest);
 }

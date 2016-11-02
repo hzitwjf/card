@@ -4,6 +4,8 @@ import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.CardCoupon;
 import com.hzit.dao.vo.CardCouponVo;
 
+import java.util.List;
+
 
 /**
  * Created by Administrator on 2016/10/29.
@@ -37,4 +39,11 @@ public interface CardCouponServices {
      * @return  返回int类型数据 1代表成功，0代表失败；
      */
     int insertCardCoupon(CardCoupon cardCoupon);
+
+    /**
+     * 根据卡券名查询所有相关卡券信息
+     * @param cardName  卡券名
+     * @return  返回所有对应的卡券信息，并放在List集合里
+     */
+    List<CardCouponVo> findByCardName(String cardName);
 }

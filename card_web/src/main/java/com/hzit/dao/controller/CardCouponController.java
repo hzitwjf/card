@@ -47,4 +47,9 @@ public class CardCouponController {
     public  String toInsetCardCoupon(CardCoupon cardCoupon){
         return "addCardCoupon";
     }
+    @RequestMapping("/findByLike")
+    @ResponseBody
+    public  Object findByLike(@RequestParam("cardName")String cardName){
+        return cardCouponServices.findByCardName(cardName);
+    }
 }

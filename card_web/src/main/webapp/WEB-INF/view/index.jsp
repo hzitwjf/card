@@ -12,47 +12,63 @@
   <script src="js/jquery-3.0.0.js"></script>
   <script src="js/ajaxfileupload.js"></script>
   <script language="JavaScript">
-    $(function () {
-      $("#btn").click(function () {
-        //alert("jquery引入成功！");
-        function ajaxFileUpload() {
-          $.ajaxFileUpload(
-                  {url: '/batch/upload', //用于文件上传的服务器端请求地址
-                    secureuri: false, //是否需要安全协议，一般设置为false
-                    fileElementName: 'file', //文件上传域的ID
-                    dataType: 'json', //返回值类型 一般设置为json
-                    success: function (data, status)  //服务器成功响应处理函数
-                    {
-                      if (typeof (data.error) != 'undefined') {
-                        if (data.error != '') {
-                          alert(data.error);
-                        } else {
-                          alert(data.msg);
-                        }
-                      }
-                    },
-                    error: function (data, status, e)//服务器响应失败处理函数
-                    {
-                      alert(e);
-                    }
-                  }
-          )
-          return false;
-        }
+      $(function(){
+        $(".btn").click(function(){
+          var show = $('#push').css('display');
+          if(show=="none"){
+            $('#push').css('display','block');
+          }else{
+            $('#push').css('display','none');
+          }
+        });
       });
-    });
+      $(function(){
+        $("#start").click(function(){
+            ajaxFileUpload();
+        });
+      });
+      function ajaxFileUpload() {
+        var elementIds=["name"]; //flag为id、name属性名
+        $.ajaxFileUpload({
+          url: '/hand/upload',
+          type: 'post',
+          secureuri: false, //一般设置为false
+          fileElementId: 'file', // 上传文件的id、name属性名
+          dataType: 'text', //返回值类型，一般设置为json、application/json
+          elementIds: elementIds, //传递参数到服务器
+          success: function(data, status){
+            $("#msg").html(data)
+          },
+          error: function(data, status, e){
+            $("#msg").html(data)
+          }
+        });
+      }
   </script>
+  <style>
+    #push{
+      width: 300px;
+      height: 100px;
+      display: none;
+      padding: 50px;
+      border: 1px solid silver;
+    }
+  </style>
 </head>
 <body>
-
-选择要上传的大图：<input type="file"  name="file"><br/>
-选择要上传的大图：<input type="file"  name="file"><br/>
-<input type="button" id="btn" value="上传图片" />
-<%--<form method="post" enctype="multipart/form-data" action="/batch/upload">
-  选择要上传的第一个文件：<input type="file" name="file"><br/>
-  选择要上传的第二个文件：<input type="file" name="file"><br/>
+上传大图：<input type="button" class="btn" value="上传" ><br/>
+<div id="push">
+  选择要上传的文件：<input type="file" name="file" id="file"><br/>
+  <input type="hidden" name="name" value="上传卡券图片" id="name"><br/>
+  <input type="button" value="上传图片" id="start">
+</div>
+上传小图：<input type="button" class="btn" value="上传"  >
+<span id="msg"></span>
+<hr/>
+<form method="post" enctype="multipart/form-data" action="/hand/upload">
+  选择要上传的文件：<input type="file" name="file"><br/>
+  文&nbsp;件&nbsp;名：<input type="text" name="name"><br/>
   <input type="submit" value="上传">
-</form>--%>
-
+</form>
 </body>
 </html>

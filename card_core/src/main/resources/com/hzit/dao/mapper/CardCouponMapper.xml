@@ -124,7 +124,13 @@
         FROM card_coupons JOIN card_type ON  card_coupons.card_type_id=card_type.card_type_id
         <include refid="cardCouponBaseWhereSql"/>
     </select>
-
+    <select id="searchCardCouponByLike" parameterType="java.lang.String" resultMap="cardCouponVoMap">
+        SELECT  card_coupons.card_id,card_coupons.card_uuid,card_coupons.card_name,card_coupons.card_big_pic_url,
+        card_coupons.card_small_pic_url,card_type.*,card_coupons.card_start_time,
+        card_coupons.card_end_time,card_coupons.card_stock,card_coupons.card_restrict,card_coupons.card_state
+        FROM card_coupons JOIN card_type ON  card_coupons.card_type_id=card_type.card_type_id
+        WHERE card_coupons.card_name LIKE CONCAT('%',#{cardName},'%')
+    </select>
     <resultMap type="com.hzit.dao.vo.CardCouponVo" id="cardCouponVoMap">
         <id column="card_id" property="cardId"/>
         <result column="card_uuid" property="cardUuid"/>

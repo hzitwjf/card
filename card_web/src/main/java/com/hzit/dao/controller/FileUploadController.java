@@ -18,14 +18,14 @@ import javax.servlet.http.HttpServletRequest;
 public class FileUploadController {
     @Autowired
     private FileUploadServices fileUploadServices;
-    @RequestMapping("pushMoreFile")
+    @RequestMapping("pushOneFile")
     public String pushMoreFile(){
         return "index";
     }
-    @RequestMapping("/batch/upload")
+    @RequestMapping("/hand/upload")
     @ResponseBody
-    public Object HandUpload(HttpServletRequest httpServletRequest){
-        return fileUploadServices.handleUploadInfo(httpServletRequest);
+    public String HandUpload(@RequestParam("name") String name, @RequestParam("file")MultipartFile file, HttpServletRequest httpServletRequest){
+        return fileUploadServices.handleUploadInfo(name,file,httpServletRequest);
     }
 
 }

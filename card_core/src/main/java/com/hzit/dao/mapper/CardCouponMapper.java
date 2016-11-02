@@ -20,5 +20,5 @@ public interface CardCouponMapper {
 	Page<CardCouponVo> searchCardCouponByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
 	List<CardCouponVo> searchCardCouponByParams(@Param("map") Map<String, String> map);
-
+	List<CardCouponVo> searchCardCouponByLike(@Param("cardName") String cardName);
 } 

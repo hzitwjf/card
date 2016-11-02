@@ -64,4 +64,10 @@ public class CardCouponServicesImpl implements CardCouponServices{
             return -1;
         }
     }
+
+    @Override
+    public List<CardCouponVo> findByCardName(String cardName) {
+        List<CardCouponVo> cardCouponVoList=cardCouponMapper.searchCardCouponByLike(cardName);
+        return cardCouponVoList;
+    }
 }
