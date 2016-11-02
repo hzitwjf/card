@@ -50,4 +50,12 @@ public interface CardDetailService {
      * @return  一个放有卡劵实体类的集合
      */
     List<CardDetailVo> findCardDetailByCardState(String userId,String cardState);
+
+    /**
+     * 查询当前用户可用的卡券数量
+     * @param userId  传入userId
+     * @param cardState 传入卡券状态
+     * @return  返回一个总数！
+     */
+    int findCardDetailCountByCardState(String userId,String cardState);
 }

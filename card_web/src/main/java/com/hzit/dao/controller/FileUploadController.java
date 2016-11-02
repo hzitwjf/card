@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author wjf
@@ -25,7 +26,8 @@ public class FileUploadController {
     }
     @RequestMapping("/hand/upload")
     @ResponseBody
-    public String HandUpload(@RequestParam("file")MultipartFile file, HttpServletRequest httpServletRequest){
+    public String HandUpload(@RequestParam("file")MultipartFile file, HttpServletRequest httpServletRequest,HttpServletResponse response){
+        response.setCharacterEncoding("utf-8");
         return fileUploadServices.handleUploadInfo(file,httpServletRequest);
     }
 

@@ -46,4 +46,9 @@ public class CardDetailController {
     public Object findCardDetailByCardState(@RequestParam("userId")String userId,@RequestParam(name="cardState",defaultValue = "0")String cardState){
         return  cardDetailService.findCardDetailByCardState(userId,cardState);
     }
+    @RequestMapping("findMyPackageCount")
+    @ResponseBody
+    public Object findMyPackageCount(@RequestParam("userId")String userId,@RequestParam(name="cardState",defaultValue = "0")String cardState){
+        return  cardDetailService.findCardDetailCountByCardState(userId,cardState);
+    }
 }

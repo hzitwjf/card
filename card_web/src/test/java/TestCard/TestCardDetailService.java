@@ -60,4 +60,9 @@ public class TestCardDetailService {
             System.out.println(cardDetailVo.toString());
         }
     }
+    @Test
+    public void findCardDetailCountByCardState(){
+        int i=cardDetailService.findCardDetailCountByCardState("a4fc6ba2-1c14-4743-a1a5-5b22553644f9","0");
+        System.out.println(i);
+    }
 }

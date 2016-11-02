@@ -90,4 +90,10 @@ public class CardDetailServicesImpl implements CardDetailService {
         List<CardDetailVo> cardDetailVoList=cardDetailMapper.searchCardDetailByParams(map);
         return cardDetailVoList;
     }
+
+    @Override
+    public int findCardDetailCountByCardState(String userId, String cardState) {
+        int count=cardDetailMapper.findCardDetailCountByCardStateAndUserId(userId,cardState);
+        return count;
+    }
 }

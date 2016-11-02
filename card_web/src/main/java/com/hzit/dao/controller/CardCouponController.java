@@ -23,7 +23,7 @@ public class CardCouponController {
     private CardCouponServices cardCouponServices;
 
     /**
-     * 分页查询卡券信息表
+     * 分页查询卡券信息表；访问路径cardCoupon/
      * @param page page参数代表当前页面的页数，默认是为0
      * @return 返回当前页面所有的卡券信息的JSON字符串
      */
@@ -35,11 +35,18 @@ public class CardCouponController {
         }
         /**
          * page是页数；
-         * 10代表一页显示多少行；
+         * 10代表一页显示多少行；已近将数据写死，一页十行！
          */
         Page<CardCouponVo> cardCouponVoPage=cardCouponServices.findByPages(page, 10);
         return cardCouponVoPage;
     }
+
+    /**
+     *
+     * @param cardUuid
+     * @param httpSession
+     * @return
+     */
     @RequestMapping("/findOneCardCoupon")
     @ResponseBody
     public  Object findOneCardCoupon(@RequestParam("cardUuid")String cardUuid,HttpSession httpSession){

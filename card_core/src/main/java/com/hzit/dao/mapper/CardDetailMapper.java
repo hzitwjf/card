@@ -21,5 +21,5 @@ public interface CardDetailMapper {
 
 	List<CardDetailVo> searchCardDetailByParams(@Param("map") Map<String, String> map);
 	Integer findCount(@Param("userId")String userId,@Param("cardId")String cardId);
-
+	Integer findCardDetailCountByCardStateAndUserId(@Param("userId")String userId,@Param("cardState")String cardState);
 } 

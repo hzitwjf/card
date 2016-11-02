@@ -49,7 +49,7 @@ public class FileUploadServicesImpl implements FileUploadServices {
                 System.out.println(filePath);
                 //转存文件
                 multipartFile.transferTo(new File(filePath));
-                return "images/"+multipartFile.getOriginalFilename();
+                return "http://localhost:8080/images/"+multipartFile.getOriginalFilename();
             }else {
                 return "文件上传失败：该文件是空的";
             }
